@@ -24,15 +24,25 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< HEAD
 !SESSION 2014-10-28 15:04:13.201 -----------------------------------------------
 eclipse.buildId=4.3.2.M20140221-1700
 java.version=1.7.0_67
+=======
+!SESSION 2014-10-28 12:36:36.826 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_AU
 Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2014-10-28 15:04:47.392
+=======
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-10-28 12:37:10.845
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
 !MESSAGE Unable to load class 'org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon' from bundle '97'
 !STACK 0
 java.lang.ClassNotFoundException: org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon cannot be found by org.eclipse.e4.ui.workbench.addons.swt_1.0.2.v20131129-1621
@@ -67,7 +77,11 @@ java.lang.ClassNotFoundException: org.eclipse.e4.ui.workbench.addons.splitteradd
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 4 0 2014-10-28 15:04:57.239
+=======
+!ENTRY org.eclipse.jface 4 0 2014-10-28 12:37:26.613
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
 !MESSAGE /icons/full/eview16/outline_co.png
 !STACK 0
 java.io.FileNotFoundException: /icons/full/eview16/outline_co.png
@@ -174,7 +188,11 @@ java.io.FileNotFoundException: /icons/full/eview16/outline_co.png
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 4 0 2014-10-28 15:04:57.450
+=======
+!ENTRY org.eclipse.jface 4 0 2014-10-28 12:37:26.911
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
 !MESSAGE /icons/full/eview16/problems_view.png
 !STACK 0
 java.io.FileNotFoundException: /icons/full/eview16/problems_view.png
@@ -267,7 +285,11 @@ java.io.FileNotFoundException: /icons/full/eview16/problems_view.png
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 4 0 2014-10-28 15:04:57.887
+=======
+!ENTRY org.eclipse.jface 4 0 2014-10-28 12:37:27.356
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
 !MESSAGE /icons/full/eview16/defaultview_misc.png
 !STACK 0
 java.io.FileNotFoundException: /icons/full/eview16/defaultview_misc.png
@@ -329,6 +351,7 @@ java.io.FileNotFoundException: /icons/full/eview16/defaultview_misc.png
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.egit.ui 2 0 2014-10-28 15:05:08.678
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\kioh'. If this is
@@ -751,3 +774,14 @@ java.io.FileNotFoundException: /icons/full/cview16/console_view.png
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
+=======
+!ENTRY org.eclipse.egit.ui 2 0 2014-10-28 12:37:31.659
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\justin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2014-10-28 12:50:39.450
+!MESSAGE Failed to open search index.
+>>>>>>> b57f82055ee8c25ba1402ee19bd661896c2333c1
