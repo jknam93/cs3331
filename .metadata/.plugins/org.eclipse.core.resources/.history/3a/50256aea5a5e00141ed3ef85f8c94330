@@ -1,0 +1,42 @@
+import java.io.FileReader;
+
+
+public class RoutingPerformance {
+	public static void main(String[] args){
+		NetworkingScheme nScheme;
+		RoutingScheme rScheme;
+		
+		if (args[NETWORK_SCHEME].equals("CIRCUIT")){
+			nScheme=new Circuit();
+		} else if (args[NETWORK_SCHEME].equals("PACKET")){
+			nScheme=new Packet();
+		} else {
+			System.exit(1);
+		}
+		
+		if (args[TOPOLOGY_FILE].equals("SHP")){
+			nScheme=new Circuit();
+		} else if (args[TOPOLOGY_FILE].equals("SDP")){
+			nScheme=new Packet();
+		} else if (args[TOPOLOGY_FILE].equals("LLP")){
+			nScheme=new Packet();
+		} else {
+			System.exit(TOPOLOGY_FILE);
+		}
+		
+		try {
+			Scanner sc = new Scanner(new FileReader(args[0]));    // args[0] is the first command line argument
+			sc.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("No such file found");
+		}
+	}
+	public static final int NETWORK_SCHEME = 0;
+	public static final int ROUTTING_SCHEME = 1;
+	public static final int TOPOLOGY_FILE = 2;
+	public static final int WORKLOAD_FILE = 3;
+	public static final int PACKET_RATE = 4;
+}
+
+

@@ -1,0 +1,30 @@
+
+public class RoutingPerformance {
+	public static void main(String[] args){
+		NetworkingScheme nScheme;
+		RoutingScheme rScheme;
+		
+		if (args[0].equals("CIRCUIT")){
+			nScheme=new Circuit();
+		} else if (args[0].equals("PACKET")){
+			nScheme=new Packet();
+		} else {
+			System.exit(1);
+		}
+		
+		if (args[1].equals("SHP")){
+			nScheme=new Circuit();
+		} else if (args[1].equals("SDP")){
+			nScheme=new Packet();
+		} else if (args[1].equals("LLP")){
+			nScheme=new Packet();
+		} else {
+			System.exit(1);
+		}
+		
+		
+	}
+}
+
+public static final int NETWORK_SCHEME = 0;
+public static final int ROUTTING_SCHEME = 1;
