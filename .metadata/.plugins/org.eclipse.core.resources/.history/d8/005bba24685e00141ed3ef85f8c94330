@@ -1,0 +1,102 @@
+import java.util.List;
+
+
+public interface Graph<E> {
+
+    /**
+     * Adds node to the graph.
+     * @param node The node to be added.
+     * @return True if node was not already in graph. False, otherwise.
+     */
+    public boolean addNode(E node);
+    
+    /**
+     * Removes node.
+     * @param node The node to be removed.
+     * @return True if node was in graph. False, otherwise.
+     */
+    public boolean removeNode(E node);
+    
+    /**
+     * Adds edge to the graph.
+     * @param from The starting node.
+     * @param to The ending node.
+     * @return True if both nodes in graph and no edges exists already.
+     */
+    public boolean addEdge(E from, E to, double weight);
+    
+    /**
+     * Removes edge from graph.
+     * @param from The starting node.
+     * @param to The ending node.
+     * @return True if edge was present.
+     */
+    public boolean removeEdge(E from, E to);
+    
+    /**
+     * Checks if node in graph.
+     * @param node The node to check for.
+     * @return True if node in graph.
+     */
+    public boolean hasNode(E node);
+    
+    /**
+     * Checks for edge in graph.
+     * @param from The starting node.
+     * @param to The ending node.
+     * @return True if edge exists
+     */
+    public boolean hasEdge(E from, E to);
+    
+    /**
+     * Gets weight of edge.
+     * @param from The starting node.
+     * @param to The ending node.
+     * @return The weight. -1 if no edges exists.
+     */
+    public double getWeight(E from, E to);
+    
+    /**
+     * Get degree of node
+     * @param node The node to get the degree of
+     * @return -1 if node not in graph. The degree, otherwise.
+     */
+    public int getDegree(E node);
+    
+    /**
+     * Checks for the empty graph.
+     * @return True if no nodes in graph.
+     */
+    public boolean isEmpty();
+    
+    /**
+     * Removes all nodes and edges from the graph.
+     */
+    public void clear();
+    
+    /**
+     * Gets all nodes in the graph.
+     * @return All nodes in the graph in no defined order.
+     */
+    public List<E> getNodes();
+    
+    /**
+     * Gets all nodes of the given node
+     * @param The given node
+     * @return The neighbours in no defined order.
+     */
+    public List<E> getNeighbours(E node);
+    
+    /**
+     * Get the shortest path from 'from' to 'to'.
+     * There is only a path from a node to itself 
+     * if there exists a refexive edge.
+     * @param from
+     * @param to
+     * @return The path containing both the from 
+     * and to nodes. If there is no path, then null.
+     * If path is just reflexive edge, then path is
+     * a single-element list containing the node.
+     */
+    public List<E> shortestPath(E from, E to);
+}

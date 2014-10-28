@@ -1,0 +1,148 @@
+import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+
+/**
+ * 
+ */
+
+/**
+ * @author jkna499
+ *
+ */
+public class GraphImpl<E> implements Graph<E> {
+    public GraphImpl(){
+    	G = new LinkedList<Node<E>>();
+    	nodeIndex = new ArrayList<E>();
+    }
+	/* (non-Javadoc)
+	 * @see Graph#addNode<e>(java.lang.Object)
+	 */
+	@Override
+	public boolean addNode(E node) {
+		
+		if(nodeIndex.contains(node)){
+		   return false;
+		}
+		Node<E> N = new Node<E>(node);
+	    G.add(N);
+	    nodeIndex.add(node);
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#removeNode<E>(java.lang.Object)
+	 */
+	@Override
+	public boolean removeNode(E node) {
+		int index = nodeIndex.indexOf(node);
+		if(index == -1){
+			return false;
+		}
+		G.remove(index);
+		nodeIndex.remove(index);
+		for(Node<E> I: G){
+			I.remove(node);
+		}
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#addEdge(java.lang.Object, java.lang.Object)
+	 */
+	@Override
+	public boolean addEdge(E from, E to, double weight) {
+		int indexFrom = nodeIndex.indexOf(from);
+		int indexTo = nodeIndex.indexOf(to);
+		if(indexFrom == -1 || indexTo == -1){
+			return false;
+		}
+		
+		return G.get(indexFrom).add(to, weight);
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#removeEdge(java.lang.Object, java.lang.Object)
+	 */
+	@Override
+	public boolean removeEdge(E from, E to) {
+		return G.get(nodeIndex.indexOf(from)).remove(to);
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#hasNode<E>(java.lang.Object)
+	 */
+	@Override
+	public boolean hasNode(E node) {
+		return nodeIndex.contains(node);
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#hasEdge(java.lang.Object, java.lang.Object)
+	 */
+	@Override
+	public boolean hasEdge(E from, E to) {
+		return G.get(nodeIndex.indexOf(from)).contains(to);
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#getDegree(java.lang.Object)
+	 */
+	@Override
+	public int getDegree(E node) {
+		return G.get(nodeIndex.indexOf(node)).size();
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#isEmpty()
+	 */
+	@Override
+	public boolean isEmpty() {
+		return nodeIndex.size() == 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#clear()
+	 */
+	@Override
+	public void clear() {
+		G.clear();
+
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#getNodes()
+	 */
+	@Override
+	public List<E> getNodes() {
+		return nodeIndex;
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#getNeighbours(java.lang.Object)
+	 */
+	@Override
+	public List<E> getNeighbours(E node) {
+		return new ArrayList<E>(G.get(nodeIndex.indexOf(node)).edgeList());
+	}
+
+	/* (non-Javadoc)
+	 * @see Graph#shortestPath(java.lang.Object, java.lang.Object)
+	 */
+	@Override
+	public List<E> shortestPath(E from, E to) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/* (non-Javadoc)
+	 * @see Graph#getWeight(java.lang.Object, java.lang.Object)
+	 */
+	@Override
+	public double getWeight(E from, E to){
+		int index = nodeIndex.indexOf(from);
+		
+		return G.get(index).getWeight(to);
+	}
+    private LinkedList<Node<E>> G;
+    private ArrayList<E> nodeIndex;
+}

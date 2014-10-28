@@ -1,0 +1,172 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Random;
+import java.awt.Point;
+/**
+ * @author jkna499
+ *
+ */
+public class Network implements Graph {
+    public Maze(int width, int height){
+    	this.g = new HashMap<Point, Node<Point>>();
+    	this.width = width;
+    	this.height = height;
+    	for(int i = 1; i <= height; i++){
+    		for(int j = 1; j <= width; j++){
+    			Point p = new Point(j, i);
+    			this.addNode(p);
+    		}
+    	}
+    	this.generatePrimMaze();
+    }
+	public boolean addNode(Point node) {
+		
+		if(g.containsKey(node)){
+		   return false;
+		}
+		Node<Point> n = new Node<Point>(node);
+	    g.put(node, n);
+		return true;
+	}
+	public boolean addEdge(Point from, Point to, int weight) {
+
+		if(g.containsKey(from) && g.containsKey(to)){
+			g.get(from).add(to, weight);
+			g.get(to).add(from, weight);
+			return true;
+		}
+		return false;
+	}
+	public boolean removeEdge(Point from, Point to) {
+		if(!g.containsKey(from) || g.containsKey(to)){
+			return false;
+		}
+		if(!this.hasEdge(from, to)){
+			return false;
+		}
+
+		g.get(from).remove(to);
+		return g.get(to).remove(from);
+	}
+	public boolean hasNode(Point node) {
+		return g.containsKey(node);
+	}
+
+	public boolean hasEdge(Point from, Point to) {
+		if(!g.containsKey(from) || !g.containsKey(to)){
+			return false;
+		}
+		return g.get(from).contains(to);
+	}
+	public int getDegree(Point node) {
+		return g.get(node).size();
+	}
+	public boolean isEmpty() {
+		return g.size() == 0;
+	}
+	public void clear() {
+		g.clear();
+
+	}
+	public List<Point> getNodes() {
+		return new LinkedList<Point>(g.keySet());
+	}
+	public List<Point> getNeighbours(Point node) {
+		return new ArrayList<Point>(g.get(node).edgeList());
+	}
+	public List<Point> shortestPath(Point from, Point to) {
+	   	PriorityQueue<Element<Point>> open = new PriorityQueue<Element<Point>>();
+    	LinkedList<Element<Point>> close = new LinkedList<Element<Point>>();
+    	
+    	Element<Point> head = new Element<Point>(0, from);
+    	open.add(head);
+    	while(!open.isEmpty()){
+    		head = open.poll();
+    		close.add(head);
+    		if(head.getN().equals(to)){
+    			break;
+    		}
+    		for(Point s: this.getNeighbours(head.getN())){
+    			boolean add = true;
+    			Element<Point> newElement = new Element<Point>(head.getF() + this.getWeight(head.getN(), s), s);
+    			for(Element<Point> e: close){
+    				if(newElement.getN().equals(e.getN())){
+    					if(newElement.getF() < e.getF()){
+    						//open.add(newElement);
+    						add = true;
+    						close.remove(e);
+    						break;
+    					} else {
+    						add = false;
+    						break;
+    					}
+    				}
+    			}
+    			
+    			for(Element<Point> e: open){
+    				if(newElement.getN().equals(e.getN())){
+    					if (newElement.getF() < e.getF()){
+    						add = true;
+    						//e.changeG(newElement.getG());
+    						open.remove(e);
+    						break;
+    					} else {
+    						add = false;
+    						break;
+    					}
+    				}
+    			}
+    			
+    			if(add ==true){
+    				open.add(newElement);
+    			}
+    		}
+    	}
+    	if(open.isEmpty() && !close.getLast().getN().equals(to)){
+    		return null;
+    	}
+    	LinkedList<Point> ret = new LinkedList<Point>();
+    	ret.add(close.getLast().getN());
+    	double currG = close.getLast().getF();
+    	for(int i = close.size() - 2; i != -1; i--){
+    		if(this.hasEdge(ret.peek(), close.get(i).getN())){
+    			double g = close.get(i).getF();
+    			double distance = this.getWeight(close.get(i).getN(), ret.peek());
+    			if(currG == g + distance){
+    				ret.addFirst(close.get(i).getN());
+    				currG = close.get(i).getF();
+    			}
+    		}
+    	}
+        return ret;
+	}
+	public boolean isConnected(Point from, Point to) {
+		if(!this.hasNode(from) || !this.hasNode(to)){
+			return false;
+		}
+		LinkedList<Point> open = new LinkedList<Point>();
+		LinkedList<Point> close = new LinkedList<Point>();
+		open.add(from);
+		Point head;
+		while(!open.isEmpty()){
+			head = open.poll();
+			close.add(head);
+			if(head.equals(to)){
+				return true;
+			}
+			for(Point e: this.getNeighbours(head)){
+				if(!close.contains(e)){
+					open.addFirst(e);
+				}
+			}
+		}
+		
+		return false;
+	}
+
+	private HashMap<Point, Node<Point>> g;
+}

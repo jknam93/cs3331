@@ -8,7 +8,7 @@ public class RoutingPerformance {
 		NetworkingScheme nScheme;
 		RoutingScheme rScheme;
 		Integer packetRate;
-		Network network = new Network();
+		
 		
 		//Choose netowrking scheme
 		try {
