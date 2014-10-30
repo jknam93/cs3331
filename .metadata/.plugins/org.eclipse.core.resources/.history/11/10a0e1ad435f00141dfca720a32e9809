@@ -1,0 +1,18 @@
+import java.util.PriorityQueue;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SHP implements RoutingScheme {
+    Node newNode = new Node();
+    
+    
+}
+
+public static List<Node> getShortestPathTo(Node target){
+    List<Node> path = new ArrayList<Node>();
+    for (Node vertex = target; vertex != null; vertex = vertex.previous)
+        path.add(vertex);
+    Collections.reverse(path);
+    return path;
+}

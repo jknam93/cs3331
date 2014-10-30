@@ -8,7 +8,7 @@ public class RoutingPerformance {
 		Integer packetRate;
 		Network network = new Network();
 		
-		//Choose netowrking scheme
+		//Choose networking scheme
 		try {
 			if (args[NETWORK_SCHEME].equals("CIRCUIT")){
 				nScheme=new Circuit();
@@ -24,11 +24,11 @@ public class RoutingPerformance {
 		}
 		//Choose routing scheme
 		try {
-			if (args[TOPOLOGY_FILE].equals("SHP")){
+			if (args[ROUTING_SCHEME].equals("SHP")){
 				nScheme=new Circuit();
-			} else if (args[TOPOLOGY_FILE].equals("SDP")){
+			} else if (args[ROUTING_SCHEME].equals("SDP")){
 				nScheme=new Packet();
-			} else if (args[TOPOLOGY_FILE].equals("LLP")){
+			} else if (args[ROUTING_SCHEME].equals("LLP")){
 				nScheme=new Packet();
 			} else {
 				System.err.println("Routing scheme must be SHP, SDP or LLP");
@@ -78,7 +78,7 @@ public class RoutingPerformance {
 		//do stuff
 	}
 	public static final int NETWORK_SCHEME = 0;
-	public static final int ROUTTING_SCHEME = 1;
+	public static final int ROUTING_SCHEME = 1;
 	public static final int TOPOLOGY_FILE = 2;
 	public static final int WORKLOAD_FILE = 3;
 	public static final int PACKET_RATE = 4;

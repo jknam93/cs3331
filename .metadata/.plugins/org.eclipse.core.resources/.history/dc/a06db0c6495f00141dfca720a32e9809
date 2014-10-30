@@ -1,0 +1,6 @@
+
+public class Circuit implements NetworkingScheme {
+	public static Circuit(){
+		
+	}
+}

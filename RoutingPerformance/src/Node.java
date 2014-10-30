@@ -65,5 +65,7 @@ public class Node<E>{
     public int getWeight(E edge){
     	return edges.get(edge);
     }
+    
     private HashMap<E, Integer> edges;
+    
 }
